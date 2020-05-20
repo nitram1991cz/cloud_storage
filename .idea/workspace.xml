@@ -22,8 +22,11 @@
     <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Vytvorit get s parametrem page, ktery naincluduje stranku z pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +86,7 @@
       <workItem from="1589893917643" duration="1675000" />
       <workItem from="1589977626394" duration="2716000" />
       <workItem from="1589980371854" duration="678000" />
-      <workItem from="1589981449912" duration="8614000" />
+      <workItem from="1589981449912" duration="10355000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -99,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589990151166</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Vytvorit get s parametrem page, ktery naincluduje stranku z pages">
+      <created>1590000501651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590000501651</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,25 +149,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589981963602" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1589982050351">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1590001364168">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589982050351" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1589982050350">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590001364168" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1590001364167">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589982050350" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1589982050349">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590001364167" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1590001364166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589982050349" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1589982050351">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590001364166" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1590001364167">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589982050351" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1589990186813">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590001364167" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590000512611">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589990186813" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590000512611" />
   </component>
 </project>

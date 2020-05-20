@@ -1,4 +1,5 @@
 <?php
+include "./pages/header.php";
 
 $page = htmlspecialchars($_GET['page']);
 switch($page){
@@ -8,7 +9,7 @@ switch($page){
         include "./pages/$page.php";
         break;
     default:
-        echo "neexistujici stranka";
+        header("Location: ./pages/home.php");
 }
-
+include "./pages/footer.php";
 ?>
