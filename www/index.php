@@ -1,4 +1,14 @@
 <?php
+
 $page = htmlspecialchars($_GET['page']);
-include "./pages/$page.php";
+switch($page){
+    case "admin":
+    case "home":
+    case "login":
+        include "./pages/$page.php";
+        break;
+    default:
+        echo "neexistujici stranka";
+}
+
 ?>
