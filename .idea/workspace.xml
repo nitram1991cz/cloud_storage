@@ -19,12 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Vytvorit get s parametrem page, ktery naincluduje stranku z pages">
+    <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Vyplnit a implementovat header.php a footer.php">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/login.php" afterDir="false" />
     </list>
@@ -86,7 +84,8 @@
       <workItem from="1589893917643" duration="1675000" />
       <workItem from="1589977626394" duration="2716000" />
       <workItem from="1589980371854" duration="678000" />
-      <workItem from="1589981449912" duration="10355000" />
+      <workItem from="1589981449912" duration="12075000" />
+      <workItem from="1590065495737" duration="1810000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -109,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590000501651</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Vyplnit a implementovat header.php a footer.php">
+      <created>1590002357247</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1590002357247</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +136,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Vytvoření strukturového adresáře" />
     <MESSAGE value="Vytvorit get s parametrem page, ktery naincluduje stranku z pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vytvorit get s parametrem page, ktery naincluduje stranku z pages" />
+    <MESSAGE value="Vyplnit a implementovat header.php a footer.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vyplnit a implementovat header.php a footer.php" />
   </component>
   <component name="WindowStateProjectService">
     <state x="349" y="68" key="#CLI_Interpreters" timestamp="1589984236122">
@@ -149,25 +156,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589981963602" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1590001364168">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1590006595813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590001364168" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1590001364167">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590006595813" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1590006595812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590001364167" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1590001364166">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590006595812" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1590006595812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590001364166" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1590001364167">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590006595812" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1590006595812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590001364167" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590000512611">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590006595812" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590002367080">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590000512611" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590002367080" />
   </component>
 </project>
