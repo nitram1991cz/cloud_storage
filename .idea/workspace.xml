@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Vytvořit nadpisy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
       <workItem from="1589977626394" duration="2716000" />
       <workItem from="1589980371854" duration="678000" />
       <workItem from="1589981449912" duration="12075000" />
-      <workItem from="1590065495737" duration="4442000" />
+      <workItem from="1590065495737" duration="5608000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -122,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590067481998</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Vytvořit nadpisy">
+      <created>1590083318014</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590083318014</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,9 +184,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590006595812" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590067494590">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590083329493">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590067494590" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590083329493" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1590084524782">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1590084524782" />
   </component>
 </project>
