@@ -16,6 +16,15 @@ $users = array(array('id'=>1,'username'=>'Franta','password'=>'heslo1','storage_
     array('id'=>4,'username'=>'Ondra','password'=>'heslo4','storage_limit'=>intval("")),
     array('id'=>5,'username'=>'Michal','password'=>'heslo5','storage_limit'=>intval(3)));
 
-var_dump($users);
+/*var_dump($users);*/
+
+echo('<table border="1">');
+foreach ($users as $index) {
+    echo('<tr><td>' . htmlspecialchars($index['username']) . '</td>');
+    echo('<td>'. htmlspecialchars($index['storage_limit']) . '</td></tr>');
+}
+echo('</table>');
+
+
 include "footer.php";
 ?>
