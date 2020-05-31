@@ -16,7 +16,7 @@ $users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 
 <table border="1">
 <span style="color: red;">
     <?php
-    function validateLength($password, $min, $max)
+    function validatePasswordLength($password, $min, $max)
     {
         if ($password < $min) {
             echo("Heslo musi mit minimalne 5 znaku");
@@ -26,19 +26,16 @@ $users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 
         }
     }
 
-    function validateStorageLimit()
+    function validateStorageLimit($storage_limit)
     {
-        if (!is_numeric($_POST["storage_limit"]) and $_POST["storage_limit"] != null) {
+        if (!is_numeric($storage_limit) and $storage_limit != null) {
             echo("Limit muze byt pouze cislo nebo prazdny retezec");
         }
     }
 
-    if (isset($_POST["password"])) {
-        validateLength(strlen($_POST["password"]), 5, 20);
-    }
-
-    if (isset($_POST["storage_limit"])) {
-        validateStorageLimit();
+    if (isset($_POST['save'])) {
+        validatePasswordLength(strlen($_POST["password"]), 5, 20);
+        validateStorageLimit($_POST["storage_limit"]);
     }
     /**    if (isset($_POST["password"])) {
      * if (strlen($_POST["password"]) < 5) {
@@ -70,7 +67,7 @@ $users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 
                        value="<?php echo(htmlspecialchars($index['password'])); ?>"</td>
 
 
-            <input type=submit value=save>
+            <input type=submit name=save value=save>
         </tr>
         <input type="hidden" name="id" value="<?php echo(htmlspecialchars($index['id'])); ?>">
     </form>
