@@ -16,17 +16,42 @@ $users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 
 <table border="1">
 <span style="color: red;">
     <?php
-    if (isset($_POST["password"])) {
-        if (strlen($_POST["password"]) < 5) {
+    function validateLength($password, $min, $max)
+    {
+        if ($password < $min) {
             echo("Heslo musi mit minimalne 5 znaku");
         }
-        if (strlen($_POST["password"]) > 20) {
+        if ($password > $max) {
             echo("Heslo musi mit maximalne 20 znaku");
         }
+    }
+
+    function validateStorageLimit()
+    {
         if (!is_numeric($_POST["storage_limit"]) and $_POST["storage_limit"] != null) {
             echo("Limit muze byt pouze cislo nebo prazdny retezec");
         }
     }
+
+    if (isset($_POST["password"])) {
+        validateLength(strlen($_POST["password"]), 5, 20);
+    }
+
+    if (isset($_POST["storage_limit"])) {
+        validateStorageLimit();
+    }
+    /**    if (isset($_POST["password"])) {
+     * if (strlen($_POST["password"]) < 5) {
+     * echo("Heslo musi mit minimalne 5 znaku");
+     * }
+     * if (strlen($_POST["password"]) > 20) {
+     * echo("Heslo musi mit maximalne 20 znaku");
+     * }
+     * if (!is_numeric($_POST["storage_limit"]) and $_POST["storage_limit"] != null) {
+     * echo("Limit muze byt pouze cislo nebo prazdny retezec");
+     * }
+     * }**/
+
     foreach ($users
 
     as $index) {
