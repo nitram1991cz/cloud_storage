@@ -59,9 +59,9 @@ include "header.php";
     if (isset($_POST['save'])) {
 
         if (validatePasswordLength(strlen($_POST["password"]), 5, 20) && validateStorageLimit(mysqli_real_escape_string($mysqli, $_POST['storage_limit'])) && validateUsername(mysqli_real_escape_string($mysqli, $_POST["username"]))) {
-            update("password", $_POST['password'], $_POST['id'], $mysqli);
-            update("storage_limit", $_POST['storage_limit'], $_POST['id'], $mysqli);
-            update("username", $_POST['username'], $_POST['id'], $mysqli);
+            update("password", mysqli_real_escape_string($mysqli, $_POST['password']), $_POST['id'], $mysqli);
+            update("storage_limit", mysqli_real_escape_string($mysqli, $_POST['storage_limit']), $_POST['id'], $mysqli);
+            update("username", mysqli_real_escape_string($mysqli, $_POST['username']), $_POST['id'], $mysqli);
         }
     }
 
