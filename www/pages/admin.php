@@ -4,50 +4,75 @@ include "header.php";
 <h1> Admin </h1>
 <?php
 
-$users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 'storage_limit' => 5),
-    array('id' => 2, 'username' => 'Pepa', 'password' => 'heslo2', 'storage_limit' => 7),
-    array('id' => 3, 'username' => 'Pavel', 'password' => 'heslo3', 'storage_limit' => 10),
-    array('id' => 4, 'username' => 'Ondra', 'password' => 'heslo4', 'storage_limit' => NULL),
-    array('id' => 5, 'username' => 'Michal', 'password' => 'heslo5', 'storage_limit' => 3));
-
-/* var_dump($users); */
-
 ?>
 <table border="1">
 <span style="color: red;">
     <?php
-    function validatePasswordLength($password, $min, $max)
+
+    function update($position, $value, $id, $mysqli)
     {
-        if ($password < $min) {
-            echo("Heslo musi mit minimalne 5 znaku");
+        $var = $value;
+        if (trim($var) == "" || intval($var) == 0 && gettype($var) != 'string') {
+            $var = "NULL";
+        } else {
+            $var = "'$var'";
         }
-        if ($password > $max) {
-            echo("Heslo musi mit maximalne 20 znaku");
+
+        $sql2 = "UPDATE users SET $position=$var WHERE id=$id";
+
+        if (!mysqli_query($mysqli, $sql2)) {
+            echo "Error updating record: " . mysqli_error($mysqli);
         }
+
     }
 
-    function validateStorageLimit($storage_limit)
+    function validatePasswordLength($password_length, $min, $max, $password, $id, $mysqli)
     {
-        if (!is_numeric($storage_limit) and $storage_limit != null) {
-            echo("Limit muze byt pouze cislo nebo prazdny retezec");
+        if ($password_length < $min) {
+            echo("Heslo musi mit minimalne 5 znaku. ");
+            return;
         }
+        if ($password_length > $max) {
+            echo("Heslo musi mit maximalne 20 znaku. ");
+            return;
+        }
+
+        update("password", $password, $id, $mysqli);
+    }
+
+    function validateStorageLimit($storage_limit, $id, $mysqli)
+    {
+        if (!is_numeric($storage_limit) and $storage_limit != "") {
+            echo("Limit muze byt pouze cislo nebo prazdny retezec. ");
+            return;
+        }
+        update("storage_limit", $storage_limit, $id, $mysqli);
+
+
+    }
+
+    function validateUsername($username, $id, $mysqli)
+    {
+        if (strlen($username) > 50) {
+            echo("Uživatelské jméno může mít maximálně 50 znaků. ");
+            return;
+        }
+        update("username", $username, $id, $mysqli);
     }
 
     if (isset($_POST['save'])) {
-        validatePasswordLength(strlen($_POST["password"]), 5, 20);
-        validateStorageLimit($_POST["storage_limit"]);
+        validatePasswordLength(strlen($_POST["password"]), 5, 20, $_POST["password"], $_POST["id"], $mysqli);
+        validateStorageLimit($_POST['storage_limit'], $_POST["id"], $mysqli);
+        validateUsername($_POST["username"], $_POST["id"], $mysqli);
     }
-    /**    if (isset($_POST["password"])) {
-     * if (strlen($_POST["password"]) < 5) {
-     * echo("Heslo musi mit minimalne 5 znaku");
-     * }
-     * if (strlen($_POST["password"]) > 20) {
-     * echo("Heslo musi mit maximalne 20 znaku");
-     * }
-     * if (!is_numeric($_POST["storage_limit"]) and $_POST["storage_limit"] != null) {
-     * echo("Limit muze byt pouze cislo nebo prazdny retezec");
-     * }
-     * }**/
+
+    $sql = "SELECT * FROM users";
+    $users = mysqli_query($mysqli, $sql);
+    /*   if (!mysqli_query($mysqli,"SET @a:='this will not work'")) {
+           echo (mysqli_error($mysqli));
+           echo("chyba");
+       }*/
+    if (mysqli_num_rows($users) > 0) {
 
     foreach ($users
 
@@ -55,7 +80,7 @@ $users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 
 
     ?>
 </span>
-    <form action="admin.php" method="post">
+    <form action="index.php?page=admin" method="post">
         <tr>
             <td><input type="text" size="10" name="username"
                        value="<?php echo(htmlspecialchars($index['username'])); ?>"</td>
@@ -73,15 +98,13 @@ $users = array(array('id' => 1, 'username' => 'Franta', 'password' => 'heslo1', 
     </form>
     <?php
     }
+    }
     ?>
 
 </table>
 
 <?php
 
-/**echo($_POST["jmeno"]);
- * echo($_POST["limit"]);
- * echo($_POST["cislo"]);**/
 include "footer.php";
 ?>
 

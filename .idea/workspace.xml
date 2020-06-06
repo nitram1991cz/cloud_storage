@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Načíst a validovat hodnoty při ukládání">
+      <change afterPath="$PROJECT_DIR$/www/system/db.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +95,13 @@
       <workItem from="1590787724744" duration="3198000" />
       <workItem from="1590824998919" duration="7013000" />
       <workItem from="1590909816653" duration="2837000" />
-      <workItem from="1590931050996" duration="4667000" />
+      <workItem from="1590931050996" duration="6848000" />
+      <workItem from="1591032812827" duration="1515000" />
+      <workItem from="1591115617841" duration="6265000" />
+      <workItem from="1591189703637" duration="4847000" />
+      <workItem from="1591275512936" duration="6711000" />
+      <workItem from="1591359338012" duration="11101000" />
+      <workItem from="1591428810367" duration="2343000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -193,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590932412202</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Načíst a validovat hodnoty při ukládání">
+      <created>1590935796675</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1590935796675</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,10 +270,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590087094780" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590932423767">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1591116074377">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590932423767" />
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1591116074377" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590935819588">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590935819588" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1590084524782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

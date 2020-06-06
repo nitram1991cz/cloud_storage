@@ -1,8 +1,9 @@
 <?php
-$page="";
+include "./system/db.php";
+$page = "";
 if (isset($_GET['page']))
     $page = htmlspecialchars($_GET['page']);
-switch($page){
+switch ($page) {
     case "admin":
     case "home":
     case "login":
