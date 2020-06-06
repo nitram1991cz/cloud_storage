@@ -23,47 +23,46 @@ include "header.php";
         if (!mysqli_query($mysqli, $sql2)) {
             echo "Error updating record: " . mysqli_error($mysqli);
         }
-
     }
 
-    function validatePasswordLength($password_length, $min, $max, $password, $id, $mysqli)
+    function validatePasswordLength($password_length, $min, $max)
     {
         if ($password_length < $min) {
             echo("Heslo musi mit minimalne 5 znaku. ");
-            return;
+            return false;
         }
         if ($password_length > $max) {
             echo("Heslo musi mit maximalne 20 znaku. ");
-            return;
+            return false;
         }
-
-        update("password", $password, $id, $mysqli);
+        return true;
     }
 
-    function validateStorageLimit($storage_limit, $id, $mysqli)
+    function validateStorageLimit($storage_limit)
     {
         if (!is_numeric($storage_limit) and $storage_limit != "") {
             echo("Limit muze byt pouze cislo nebo prazdny retezec. ");
-            return;
+            return false;
         }
-        update("storage_limit", $storage_limit, $id, $mysqli);
-
-
+        return true;
     }
 
-    function validateUsername($username, $id, $mysqli)
+    function validateUsername($username)
     {
         if (strlen($username) > 50) {
             echo("Uživatelské jméno může mít maximálně 50 znaků. ");
-            return;
+            return false;
         }
-        update("username", $username, $id, $mysqli);
+        return true;
     }
 
     if (isset($_POST['save'])) {
-        validatePasswordLength(strlen($_POST["password"]), 5, 20, $_POST["password"], $_POST["id"], $mysqli);
-        validateStorageLimit($_POST['storage_limit'], $_POST["id"], $mysqli);
-        validateUsername($_POST["username"], $_POST["id"], $mysqli);
+
+        if (validatePasswordLength(strlen($_POST["password"]), 5, 20) && validateStorageLimit(mysqli_real_escape_string($mysqli, $_POST['storage_limit'])) && validateUsername(mysqli_real_escape_string($mysqli, $_POST["username"]))) {
+            update("password", $_POST['password'], $_POST['id'], $mysqli);
+            update("storage_limit", $_POST['storage_limit'], $_POST['id'], $mysqli);
+            update("username", $_POST['username'], $_POST['id'], $mysqli);
+        }
     }
 
     $sql = "SELECT * FROM users";
@@ -86,12 +85,8 @@ include "header.php";
                        value="<?php echo(htmlspecialchars($index['username'])); ?>"</td>
             <td><input type="text" size="10" name="storage_limit"
                        value="<?php echo(htmlspecialchars($index['storage_limit'])); ?>"</td>
-
-
             <td><input type="text" size="10" name="password"
                        value="<?php echo(htmlspecialchars($index['password'])); ?>"</td>
-
-
             <input type=submit name=save value=save>
         </tr>
         <input type="hidden" name="id" value="<?php echo(htmlspecialchars($index['id'])); ?>">
