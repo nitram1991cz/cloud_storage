@@ -16,18 +16,20 @@ include "header.php";
                            value=""</td>
                 <input type=submit name=add_user value='Add user'>
             </tr>
+        </table>
     </form>
     <span style="color: red;">
 <?php
 
 function delete($id, $mysqli)
 {
+    $id = mysqli_real_escape_string($mysqli, $id);
     $sql = "DELETE FROM users WHERE id=$id";
 
     if (mysqli_query($mysqli, $sql)) {
-        echo "Record deleted successfully";
+        echo "Záznam byl úspěšně smazán. ";
     } else {
-        echo "Error deleting record: " . mysqli_error($mysqli);
+        echo "Chyba při mazání záznamu: " . mysqli_error($mysqli);
     }
 }
 
@@ -38,12 +40,13 @@ function insert($username, $password, $storage_limit, $mysqli)
     }
     $username = mysqli_real_escape_string($mysqli, $username);
     $password = mysqli_real_escape_string($mysqli, $password);
+    $storage_limit = mysqli_real_escape_string($mysqli, $storage_limit);
 
     $sql = "INSERT INTO users (username, password, storage_limit)
             VALUES ('$username', '$password', $storage_limit)";
 
     if (mysqli_query($mysqli, $sql)) {
-        echo "New record created successfully";
+        echo "Záznam byl úspěšně vytvořen. ";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
     }
@@ -51,17 +54,18 @@ function insert($username, $password, $storage_limit, $mysqli)
 
 function update($position, $value, $id, $mysqli)
 {
-    $var = mysqli_real_escape_string($mysqli, $value);
+    $var = $value;
     if (trim($var) == "" || intval($var) == 0 && gettype($var) != 'string') {
         $var = "NULL";
     } else {
         $var = "'$var'";
     }
+    $var = mysqli_real_escape_string($mysqli, $var);
 
     $sql2 = "UPDATE users SET $position=$var WHERE id=$id";
 
     if (!mysqli_query($mysqli, $sql2)) {
-        echo "Error updating record: " . mysqli_error($mysqli);
+        echo "Chyba při aktualizaci záznamu: " . mysqli_error($mysqli);
     }
 }
 
@@ -97,6 +101,8 @@ function validateUsername($username, $mysqli)
         echo("Uživatelské jméno může mít maximálně 50 znaků. ");
         return false;
     }
+
+    $username = mysqli_real_escape_string($mysqli, $username);
 
     $sql = "SELECT COUNT(*) FROM users WHERE username='$username' ";
     $result = mysqli_query($mysqli, $sql);
@@ -138,23 +144,25 @@ if (mysqli_num_rows($users) > 0) {
         ?>
         </span>
         <form action="index.php?page=admin" method="post">
-        <tr>
-            <td><input type="text" size="10" name="username"
-                       value="<?php echo(htmlspecialchars($user['username'])); ?>"</td>
-            <td><input type="text" size="10" name="storage_limit"
-                       value="<?php echo(htmlspecialchars($user['storage_limit'])); ?>"</td>
-            <td><input type="text" size="10" name="password"
-                       value="<?php echo(htmlspecialchars($user['password'])); ?>"</td>
-            <input type=submit name=save value=save>
-            <input type=submit name=delete value=delete>
-        </tr>
-        <input type="hidden" name="id" value="<?php echo(htmlspecialchars($user['id'])); ?>">
+            <table border="1">
+                <tr>
+                    <td><input type="text" size="10" name="username"
+                               value="<?php echo(htmlspecialchars($user['username'])); ?>"</td>
+                    <td><input type="text" size="10" name="storage_limit"
+                               value="<?php echo(htmlspecialchars($user['storage_limit'])); ?>"</td>
+                    <td><input type="text" size="10" name="password"
+                               value="<?php echo(htmlspecialchars($user['password'])); ?>"</td>
+                    <input type=submit name=save value=save>
+                    <input type=submit name=delete value=delete>
+                </tr>
+                <input type="hidden" name="id" value="<?php echo(htmlspecialchars($user['id'])); ?>">
+            </table>
+        </form>
         <?php
     }
 }
 ?>
-    </table>
-    </form>
+
 
 <?php
 
