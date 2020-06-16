@@ -24,7 +24,7 @@ include "header.php";
 function delete($id, $mysqli)
 {
     $id = mysqli_real_escape_string($mysqli, $id);
-    $sql = "DELETE FROM users WHERE id=$id";
+    $sql = "DELETE FROM users WHERE id='$id'";
 
     if (mysqli_query($mysqli, $sql)) {
         echo "Záznam byl úspěšně smazán. ";
@@ -35,36 +35,36 @@ function delete($id, $mysqli)
 
 function insert($username, $password, $storage_limit, $mysqli)
 {
-    if ($storage_limit == "") {
-        $storage_limit = "NULL";
+    $var = intval($storage_limit);
+    if (trim($var) == "" || intval($var) == 0) {
+        $var = "NULL";
     }
-    $username = mysqli_real_escape_string($mysqli, $username);
-    $password = mysqli_real_escape_string($mysqli, $password);
-    $storage_limit = mysqli_real_escape_string($mysqli, $storage_limit);
+    if (gettype($var) == 'integer' || $var == "NULL") {
+        $username = mysqli_real_escape_string($mysqli, $username);
+        $password = mysqli_real_escape_string($mysqli, $password);
+        $sql = "INSERT INTO users (username, password, storage_limit)
+            VALUES ('$username', '$password', $var)";
 
-    $sql = "INSERT INTO users (username, password, storage_limit)
-            VALUES ('$username', '$password', $storage_limit)";
-
-    if (mysqli_query($mysqli, $sql)) {
-        echo "Záznam byl úspěšně vytvořen. ";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+        if (mysqli_query($mysqli, $sql)) {
+            echo "Záznam byl úspěšně vytvořen. ";
+        } else {
+            echo "Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysqli_error($mysqli);
+        }
     }
 }
 
 function update($position, $value, $id, $mysqli)
 {
     $var = $value;
+    $id = mysqli_real_escape_string($mysqli, $id);
     if (trim($var) == "" || intval($var) == 0 && gettype($var) != 'string') {
         $var = "NULL";
+        $sql = "UPDATE users SET $position=$var WHERE id='$id'";
     } else {
-        $var = "'$var'";
+        $var = mysqli_real_escape_string($mysqli, $var);
+        $sql = "UPDATE users SET $position='$var' WHERE id='$id'";
     }
-    $var = mysqli_real_escape_string($mysqli, $var);
-
-    $sql2 = "UPDATE users SET $position=$var WHERE id=$id";
-
-    if (!mysqli_query($mysqli, $sql2)) {
+    if (!mysqli_query($mysqli, $sql)) {
         echo "Chyba při aktualizaci záznamu: " . mysqli_error($mysqli);
     }
 }
@@ -91,7 +91,7 @@ function validateStorageLimit($storage_limit)
     return true;
 }
 
-function validateUsername($username, $mysqli)
+function validateChangeUsername($username, $mysqli, $id)
 {
     if (strlen($username) == 0) {
         echo("Uživatelské jméno musí být zadané. ");
@@ -101,9 +101,34 @@ function validateUsername($username, $mysqli)
         echo("Uživatelské jméno může mít maximálně 50 znaků. ");
         return false;
     }
-
     $username = mysqli_real_escape_string($mysqli, $username);
+    $sql = "SELECT COUNT(*) FROM users WHERE username='$username' ";
+    $result = mysqli_query($mysqli, $sql);
+    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+    $id = mysqli_real_escape_string($mysqli, $id);
+    $sql = "SELECT username FROM users WHERE id='$id'";
+    $result2 = mysqli_query($mysqli, $sql);
+    $row2 = mysqli_fetch_array($result2);
+    if ($username != $row2[0]) {
+        if ($row[0] > 0) {
+            echo("Uživatel s touto přezdívkou je již v databázi obsažen.");
+            return false;
+        }
+    }
+    return true;
+}
 
+function validateNewUsername($username, $mysqli)
+{
+    if (strlen($username) == 0) {
+        echo("Uživatelské jméno musí být zadané. ");
+        return false;
+    }
+    if (strlen($username) > 50) {
+        echo("Uživatelské jméno může mít maximálně 50 znaků. ");
+        return false;
+    }
+    $username = mysqli_real_escape_string($mysqli, $username);
     $sql = "SELECT COUNT(*) FROM users WHERE username='$username' ";
     $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_NUM);
@@ -116,7 +141,7 @@ function validateUsername($username, $mysqli)
 
 if (isset($_POST['add_user'])) {
 
-    if (validatePasswordLength($_POST["password"], 5, 20) && validateStorageLimit($_POST['storage_limit']) && validateUsername($_POST["username"], $mysqli)) {
+    if (validatePasswordLength($_POST['password'], 5, 20) && validateStorageLimit($_POST['storage_limit']) && validateNewUsername($_POST['username'], $mysqli)) {
 
         insert($_POST['username'], $_POST['password'], $_POST['storage_limit'], $mysqli);
     }
@@ -124,7 +149,7 @@ if (isset($_POST['add_user'])) {
 
 if (isset($_POST['save'])) {
 
-    if (validatePasswordLength($_POST["password"], 5, 20) && validateStorageLimit($_POST['storage_limit']) && validateUsername($_POST["username"], $mysqli)) {
+    if (validatePasswordLength($_POST["password"], 5, 20) && validateStorageLimit($_POST['storage_limit']) && validateChangeUsername($_POST["username"], $mysqli, $_POST["id"])) {
         $id = $_POST['id'];
         update("password", $_POST['password'], $id, $mysqli);
         update("storage_limit", $_POST['storage_limit'], $id, $mysqli);
@@ -162,9 +187,6 @@ if (mysqli_num_rows($users) > 0) {
     }
 }
 ?>
-
-
 <?php
-
 include "footer.php";
 ?>
