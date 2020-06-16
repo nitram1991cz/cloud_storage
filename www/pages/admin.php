@@ -35,34 +35,32 @@ function delete($id, $mysqli)
 
 function insert($username, $password, $storage_limit, $mysqli)
 {
-    $var = intval($storage_limit);
-    if (trim($var) == "" || intval($var) == 0) {
-        $var = "NULL";
+    $storage_limit = intval($storage_limit);    // pozor na bezpečnost
+    if (trim($storage_limit) == "" || intval($storage_limit) == 0) {
+        $storage_limit = "NULL";
     }
-    if (gettype($var) == 'integer' || $var == "NULL") {
-        $username = mysqli_real_escape_string($mysqli, $username);
-        $password = mysqli_real_escape_string($mysqli, $password);
-        $sql = "INSERT INTO users (username, password, storage_limit)
-            VALUES ('$username', '$password', $var)";
+    $username = mysqli_real_escape_string($mysqli, $username);
+    $password = mysqli_real_escape_string($mysqli, $password);
+    $sql = "INSERT INTO users (username, password, storage_limit)
+            VALUES ('$username', '$password', $storage_limit)";
 
-        if (mysqli_query($mysqli, $sql)) {
-            echo "Záznam byl úspěšně vytvořen. ";
-        } else {
-            echo "Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysqli_error($mysqli);
-        }
+    if (mysqli_query($mysqli, $sql)) {
+        echo "Záznam byl úspěšně vytvořen. ";
+    } else {
+        echo "Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysqli_error($mysqli);
     }
 }
 
-function update($position, $value, $id, $mysqli)
+function update($column_name, $column_value, $id, $mysqli)
 {
-    $var = $value;
+
     $id = mysqli_real_escape_string($mysqli, $id);
-    if (trim($var) == "" || intval($var) == 0 && gettype($var) != 'string') {
-        $var = "NULL";
-        $sql = "UPDATE users SET $position=$var WHERE id='$id'";
+    if (trim($column_value) == "" || intval($column_value) == 0 && gettype($column_value) != 'string') {
+        $column_value = "NULL";
+        $sql = "UPDATE users SET $column_name=$column_value WHERE id='$id'"; // pozor na bezpečnost $column_value
     } else {
-        $var = mysqli_real_escape_string($mysqli, $var);
-        $sql = "UPDATE users SET $position='$var' WHERE id='$id'";
+        $column_value = mysqli_real_escape_string($mysqli, $column_value);
+        $sql = "UPDATE users SET $column_name='$column_value' WHERE id='$id'";
     }
     if (!mysqli_query($mysqli, $sql)) {
         echo "Chyba při aktualizaci záznamu: " . mysqli_error($mysqli);
@@ -91,7 +89,7 @@ function validateStorageLimit($storage_limit)
     return true;
 }
 
-function validateChangeUsername($username, $mysqli, $id)
+function validateUsernameUpdate($username, $mysqli, $id)
 {
     if (strlen($username) == 0) {
         echo("Uživatelské jméno musí být zadané. ");
@@ -102,18 +100,13 @@ function validateChangeUsername($username, $mysqli, $id)
         return false;
     }
     $username = mysqli_real_escape_string($mysqli, $username);
-    $sql = "SELECT COUNT(*) FROM users WHERE username='$username' ";
+    $id = mysqli_real_escape_string($mysqli, $id);
+    $sql = "SELECT COUNT(*) FROM users WHERE username='$username' AND id<>'$id' ";
     $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_NUM);
-    $id = mysqli_real_escape_string($mysqli, $id);
-    $sql = "SELECT username FROM users WHERE id='$id'";
-    $result2 = mysqli_query($mysqli, $sql);
-    $row2 = mysqli_fetch_array($result2);
-    if ($username != $row2[0]) {
-        if ($row[0] > 0) {
-            echo("Uživatel s touto přezdívkou je již v databázi obsažen.");
-            return false;
-        }
+    if ($row[0] > 0) {
+        echo("Uživatel s touto přezdívkou je již v databázi obsažen.");
+        return false;
     }
     return true;
 }
@@ -149,7 +142,7 @@ if (isset($_POST['add_user'])) {
 
 if (isset($_POST['save'])) {
 
-    if (validatePasswordLength($_POST["password"], 5, 20) && validateStorageLimit($_POST['storage_limit']) && validateChangeUsername($_POST["username"], $mysqli, $_POST["id"])) {
+    if (validatePasswordLength($_POST["password"], 5, 20) && validateStorageLimit($_POST['storage_limit']) && validateUsernameUpdate($_POST["username"], $mysqli, $_POST["id"])) {
         $id = $_POST['id'];
         update("password", $_POST['password'], $id, $mysqli);
         update("storage_limit", $_POST['storage_limit'], $id, $mysqli);
