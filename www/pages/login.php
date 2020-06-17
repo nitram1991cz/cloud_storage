@@ -16,7 +16,7 @@ session_start();
         </table>
     </form>
     <form action="index.php?page=login" method="post">
-        <td><input type=submit name='Logout' value='Logout'></td>
+        <td><input type='submit' name='Logout' value='Logout'></td>
     </form>
 <?php
 if (isset($_POST['Login'])) {
@@ -34,7 +34,8 @@ if (isset($_POST['Login'])) {
     }
 }
 if (isset($_POST['Logout'])) {
-    session_destroy();
+    $_SESSION = [];
+    session_regenerate_id();
     echo("Odhlasen");
 }
 ?>

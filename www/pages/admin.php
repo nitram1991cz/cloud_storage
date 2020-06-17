@@ -14,7 +14,7 @@ include "header.php";
                            value=""</td>
                 <td><input type="text" size="10" name="password"
                            value=""</td>
-                <td><input type=submit name='add_user' value='Add user'></td>
+                <td><input type='submit' name='add_user' value='Add user'></td>
             </tr>
         </table>
     </form>
@@ -170,8 +170,8 @@ if (mysqli_num_rows($users) > 0) {
                                value="<?php echo(htmlspecialchars($user['storage_limit'])); ?>"</td>
                     <td><input type="text" size="10" name="password"
                                value="<?php echo(htmlspecialchars($user['password'])); ?>"</td>
-                    <td><input type=submit name='save' value=save></td>
-                    <td><input type=submit name='delete' value=delete></td>
+                    <td><input type='submit' name='save' value='save'></td>
+                    <td><input type='submit' name='delete' value='delete'></td>
                 </tr>
                 <input type="hidden" name="id" value="<?php echo(htmlspecialchars($user['id'])); ?>">
             </table>
