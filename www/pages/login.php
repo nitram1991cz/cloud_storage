@@ -11,9 +11,12 @@ session_start();
                            value="username"</td>
                 <td><input type="text" size="10" name="password"
                            value="password"</td>
-                <input type=submit name=Login value='Login'>
+                <td><input type=submit name='Login' value='Login'></td>
             </tr>
         </table>
+    </form>
+    <form action="index.php?page=login" method="post">
+        <td><input type=submit name='Logout' value='Logout'></td>
     </form>
 <?php
 if (isset($_POST['Login'])) {
@@ -30,7 +33,12 @@ if (isset($_POST['Login'])) {
         echo "Zadal jsi špatný username nebo heslo! ";
     }
 }
+if (isset($_POST['Logout'])) {
+    session_destroy();
+    echo("Odhlasen");
+}
 ?>
+
 <?php
 
 include "footer.php";
