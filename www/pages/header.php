@@ -14,7 +14,7 @@
     <td><input type='submit' name='Logout' value='Logout'></td>
 </form>
 <?php
-ini_set('session.cookie_lifetime', 2630000);
+ini_set('session.cookie_lifetime', 30*24*60*60);
 session_start();
 
 if (isset($_POST['Logout'])) {
