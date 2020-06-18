@@ -3,7 +3,9 @@ include "header.php";
 ?>
     <h1> Admin </h1>
 <?php
-
+if ($_SESSION['is_logged_user_admin']!="1") {
+    header("Location: index.php?page=login");
+}
 ?>
     <form action="index.php?page=admin" method="post">
         <table border="1">
