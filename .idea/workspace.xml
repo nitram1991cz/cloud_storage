@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Prihlasit/odhlasit uyivatele&#10;Zabezpecit administraci">
+      <change afterPath="$PROJECT_DIR$/data/1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/pages/download_file.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/pages/file_list.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/pages/remove_file.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/pages/view_file.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +44,16 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1c7yQbxiYL4hZJuV8hedOPbJAl5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -55,6 +64,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/www/index.php">
@@ -71,6 +81,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -118,7 +129,63 @@
       <workItem from="1592327191861" duration="5641000" />
       <workItem from="1592399249690" duration="5955000" />
       <workItem from="1592483075828" duration="7057000" />
-      <workItem from="1592507002864" duration="1502000" />
+      <workItem from="1592507002864" duration="1633000" />
+      <workItem from="1592570100508" duration="304000" />
+      <workItem from="1592571466238" duration="1724000" />
+      <workItem from="1592579886970" duration="1539000" />
+      <workItem from="1592635153975" duration="1216000" />
+      <workItem from="1592682165348" duration="1700000" />
+      <workItem from="1592722276657" duration="255000" />
+      <workItem from="1592764298511" duration="263000" />
+      <workItem from="1592933858073" duration="1368000" />
+      <workItem from="1593240815709" duration="1779000" />
+      <workItem from="1593244385243" duration="1746000" />
+      <workItem from="1593247269313" duration="1226000" />
+      <workItem from="1593249981955" duration="1616000" />
+      <workItem from="1593326635739" duration="1738000" />
+      <workItem from="1593328897050" duration="1852000" />
+      <workItem from="1593337507778" duration="1788000" />
+      <workItem from="1593438493069" duration="1777000" />
+      <workItem from="1593440297971" duration="588000" />
+      <workItem from="1593447757695" duration="766000" />
+      <workItem from="1593448843417" duration="1879000" />
+      <workItem from="1593781183152" duration="340000" />
+      <workItem from="1593948787068" duration="1495000" />
+      <workItem from="1594550090511" duration="1776000" />
+      <workItem from="1594552106040" duration="900000" />
+      <workItem from="1594660163027" duration="1544000" />
+      <workItem from="1594838993947" duration="1719000" />
+      <workItem from="1594926780270" duration="1008000" />
+      <workItem from="1595923781487" duration="1480000" />
+      <workItem from="1596302965643" duration="327000" />
+      <workItem from="1596303505943" duration="58000" />
+      <workItem from="1596303744554" duration="410000" />
+      <workItem from="1599371677034" duration="299000" />
+      <workItem from="1599372055687" duration="1799000" />
+      <workItem from="1599373894823" duration="1634000" />
+      <workItem from="1599406213341" duration="2839000" />
+      <workItem from="1600587557511" duration="1878000" />
+      <workItem from="1600589508344" duration="1055000" />
+      <workItem from="1600597974930" duration="1201000" />
+      <workItem from="1600611269181" duration="1701000" />
+      <workItem from="1600613117885" duration="1127000" />
+      <workItem from="1601994927041" duration="1742000" />
+      <workItem from="1601996751262" duration="1167000" />
+      <workItem from="1602946891122" duration="1783000" />
+      <workItem from="1602948712034" duration="1790000" />
+      <workItem from="1602950533296" duration="719000" />
+      <workItem from="1603008185095" duration="1785000" />
+      <workItem from="1603009994741" duration="1047000" />
+      <workItem from="1603013676171" duration="951000" />
+      <workItem from="1603015995319" duration="655000" />
+      <workItem from="1603018328942" duration="599000" />
+      <workItem from="1603021396404" duration="1701000" />
+      <workItem from="1603024532294" duration="1585000" />
+      <workItem from="1603029344956" duration="1422000" />
+      <workItem from="1603291970460" duration="1777000" />
+      <workItem from="1603293922723" duration="6167000" />
+      <workItem from="1603551068556" duration="1956000" />
+      <workItem from="1603611557100" duration="1645000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -302,11 +369,18 @@
       <option name="project" value="LOCAL" />
       <updated>1592489524636</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Prihlasit/odhlasit uyivatele&#10;Zabezpecit administraci">
+      <created>1592508522952</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1592508522952</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -321,6 +395,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Vytvoření strukturového adresáře" />
     <MESSAGE value="Vytvorit get s parametrem page, ktery naincluduje stranku z pages" />
     <MESSAGE value="Vyplnit a implementovat header.php a footer.php" />
@@ -338,57 +413,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="Prihlasit/odhlasit uyivatele&#10;Zabezpecit administraci" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="349" y="68" key="#CLI_Interpreters" timestamp="1589984236122">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594552928414">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="349" y="68" key="#CLI_Interpreters/0.0.1536.824@0.0.1536.824" timestamp="1589984236122" />
-    <state x="475" y="56" key="#PHP" timestamp="1589984241298">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1594552928414" />
+    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596303521826">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="475" y="56" key="#PHP/0.0.1536.824@0.0.1536.824" timestamp="1589984241298" />
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592041788490">
+    <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1596303521826" />
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1599372642184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1592041788490" />
-    <state x="501" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591474300020">
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1599372642184" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602948943644">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="501" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1591474300020" />
-    <state x="484" y="95" key="#index.php" timestamp="1589982019035">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="484" y="95" key="#index.php/0.0.1536.824@0.0.1536.824" timestamp="1589982019035" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1589981963602">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589981963602" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1590087094780">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590087094780" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1590087094779">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590087094779" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1590087094779">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590087094779" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1590087094780">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590087094780" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1591116074377">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1591116074377" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1592489528311">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592489528311" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1590084524782">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1590084524782" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602948943644" />
   </component>
 </project>

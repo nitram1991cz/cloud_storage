@@ -7,6 +7,11 @@ switch ($page) {
     case "admin":
     case "home":
     case "login":
+    case "view_file":
+    case "download_file":
+    case "remove_file":
+    case"file_list":
+
         include "./pages/$page.php";
         break;
     default:

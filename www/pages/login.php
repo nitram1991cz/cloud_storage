@@ -23,12 +23,12 @@ if (isset($_POST['Login'])) {
     $username = mysqli_real_escape_string($mysqli, $_POST["username"]);
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($mysqli, $sql);
-    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+    $row = mysqli_fetch_assoc($result);
     $result = mysqli_num_rows($result);
     if ($result == 1) {
         $_SESSION['logged_username'] = $username;
-        $_SESSION['id'] = $row[0];
-        $_SESSION['is_logged_user_admin'] = $row[4];
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['is_logged_user_admin'] = $row['admin'];
         //var_dump($row);
         header("Location: index.php?page=home");
         exit;
