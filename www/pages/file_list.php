@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+include "config.php";
 ?>
 <h1> File list </h1>
 <?php
@@ -8,7 +9,6 @@ if (!$_SESSION['logged_username']) {
     exit;
 }
 
-$adresar = 'C:/REPOSITORIES/cloud_storage/data/';
 $files = scandir($adresar);
 $user_id = $_SESSION['id'];
 $sql = "SELECT * FROM files where user_id='$user_id'";
@@ -18,7 +18,7 @@ $db_files = mysqli_query($mysqli, $sql);
 
 while ($row = mysqli_fetch_assoc($db_files)) {
     foreach ($files as $file) {
-        if ($file != '.' and $file != '..' and $file == $row['file_id']) {
+        if ($file == $row['file_id']) {
             echo $row['file_name'] . PHP_EOL;
             $pripona = pathinfo($row["file_name"], PATHINFO_EXTENSION);
             ?>
@@ -37,8 +37,8 @@ while ($row = mysqli_fetch_assoc($db_files)) {
                                 ?>
                                 <pre>
 <?php
-$soubor = fopen('C:/REPOSITORIES/cloud_storage/data/' . (htmlspecialchars($row['file_id'])), "r");
-$text = fread($soubor, filesize('C:/REPOSITORIES/cloud_storage/data/' . (htmlspecialchars($row['file_id']))));
+$soubor = fopen('../data/' . (htmlspecialchars($row['file_id'])), "r");
+$text = fread($soubor, filesize('../data/' . (htmlspecialchars($row['file_id']))));
 echo($text);
 fclose($soubor);
 ?>
