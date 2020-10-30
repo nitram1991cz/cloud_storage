@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Zobrazeni/smazani souboru">
-      <change afterPath="$PROJECT_DIR$/www/pages/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/download_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/download_file.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/file_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/file_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/remove_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/remove_file.php" afterDir="false" />
@@ -185,6 +185,10 @@
       <workItem from="1603613407316" duration="887000" />
       <workItem from="1603652377991" duration="1777000" />
       <workItem from="1603654181647" duration="1668000" />
+      <workItem from="1603722635745" duration="791000" />
+      <workItem from="1603808964588" duration="1308000" />
+      <workItem from="1603985365217" duration="1375000" />
+      <workItem from="1604070028173" duration="314000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -382,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603613678821</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Zobrazeni/smazani souboru">
+      <created>1603722815060</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1603722815060</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,10 +439,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1603653049110" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603613695542">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603722821551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603613695542" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603722821551" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603613620465">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

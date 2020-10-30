@@ -4,7 +4,7 @@ $file_id = $_GET['file_id'];
 
     header('Content-Type: image/png');
 
-$image = $adresar . $file_id;
+$image = $ADRESAR . $file_id;
 
 readfile($image);
 ?>

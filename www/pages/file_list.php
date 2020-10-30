@@ -9,7 +9,7 @@ if (!$_SESSION['logged_username']) {
     exit;
 }
 
-$files = scandir($adresar);
+$files = scandir($ADRESAR);
 $user_id = $_SESSION['id'];
 $sql = "SELECT * FROM files where user_id='$user_id'";
 $result = mysqli_query($mysqli, $sql);
@@ -17,8 +17,6 @@ $file_name = mysqli_fetch_assoc($result);
 $db_files = mysqli_query($mysqli, $sql);
 
 while ($row = mysqli_fetch_assoc($db_files)) {
-    foreach ($files as $file) {
-        if ($file == $row['file_id']) {
             echo $row['file_name'] . PHP_EOL;
             $pripona = pathinfo($row["file_name"], PATHINFO_EXTENSION);
             ?>
@@ -37,8 +35,8 @@ while ($row = mysqli_fetch_assoc($db_files)) {
                                 ?>
                                 <pre>
 <?php
-$soubor = fopen('../data/' . (htmlspecialchars($row['file_id'])), "r");
-$text = fread($soubor, filesize('../data/' . (htmlspecialchars($row['file_id']))));
+$soubor = fopen($ADRESAR . (htmlspecialchars($row['file_id'])), "r");
+$text = fread($soubor, filesize($ADRESAR . (htmlspecialchars($row['file_id']))));
 echo($text);
 fclose($soubor);
 ?>
@@ -65,8 +63,6 @@ fclose($soubor);
                 </table>
             </form>
             <?php
-        }
-    }
 }
 
 ?>

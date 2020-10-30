@@ -5,7 +5,7 @@ $sql = "SELECT * FROM files where file_id='$file_id'";
 $result = mysqli_query($mysqli, $sql);
 $file=mysqli_fetch_assoc($result);
 
-$a = $adresar.$file['file_id'];
+$a = $ADRESAR.$file['file_id'];
 
 header('Content-Description: File Transfer');
 header('Content-Type: application/octet-stream');

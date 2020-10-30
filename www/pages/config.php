@@ -1,3 +1,3 @@
 <?php
-$adresar = '../data/';
+$ADRESAR = '../data/';
 ?>
