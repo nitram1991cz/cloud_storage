@@ -25,7 +25,7 @@ while ($row = mysqli_fetch_assoc($db_files)) {
                     <tr>
                         <td>
                             <?php
-                            if ($pripona == "jpg") {
+                            if ($pripona == "jpg" or $pripona == "JPG") {
                                 ?>
                                 <img src="index.php?page=view_file&file_id=<?php echo(htmlspecialchars($row['file_id'])); ?>"
                                      width="100" height="100">

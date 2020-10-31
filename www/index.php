@@ -11,6 +11,7 @@ switch ($page) {
     case "download_file":
     case "remove_file":
     case"file_list":
+    case"upload_file":
 
         include "./pages/$page.php";
         break;

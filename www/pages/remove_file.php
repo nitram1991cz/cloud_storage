@@ -9,7 +9,7 @@ $file_id=htmlspecialchars($_GET['file_id']);
 $sql = "DELETE FROM files where file_id='$file_id'";
 $result = mysqli_query($mysqli, $sql);
 
-$file=mysqli_fetch_assoc($result);
-$a = $ADRESAR.$file['file_id'];
+$a = $ADRESAR.$file_id;
 unlink($a);
+header("Location: index.php?page=file_list");
 ?>

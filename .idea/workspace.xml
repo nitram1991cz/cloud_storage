@@ -20,12 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60426f3-de3c-4ffb-82bd-61debe049d45" name="Default Changelist" comment="Zobrazeni/smazani souboru">
+      <change afterPath="$PROJECT_DIR$/data/36" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/pages/pokus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/pages/upload_file.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/download_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/download_file.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/file_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/file_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/pages/remove_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/remove_file.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/pages/view_file.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/pages/view_file.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +191,19 @@
       <workItem from="1603722635745" duration="791000" />
       <workItem from="1603808964588" duration="1308000" />
       <workItem from="1603985365217" duration="1375000" />
-      <workItem from="1604070028173" duration="314000" />
+      <workItem from="1604070028173" duration="963000" />
+      <workItem from="1604137002026" duration="1555000" />
+      <workItem from="1604143338889" duration="1789000" />
+      <workItem from="1604145155621" duration="1789000" />
+      <workItem from="1604147196045" duration="1788000" />
+      <workItem from="1604149011969" duration="1701000" />
+      <workItem from="1604151581273" duration="1788000" />
+      <workItem from="1604153399223" duration="1789000" />
+      <workItem from="1604155213659" duration="1795000" />
+      <workItem from="1604161185489" duration="2087000" />
+      <workItem from="1604163346889" duration="1823000" />
+      <workItem from="1604165197867" duration="1745000" />
+      <workItem from="1604167859236" duration="736000" />
     </task>
     <task id="LOCAL-00001" summary="Vytvoření strukturového adresáře">
       <created>1589899210113</created>
@@ -393,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603722815060</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Zobrazeni/smazani souboru">
+      <created>1604070355561</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1604070355562</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,18 +453,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="Zobrazeni/smazani souboru" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604153296329">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1604153296329" />
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596303521826">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1596303521826" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1603653049110">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1604145964324">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1603653049110" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603722821551">
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604145964324" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604070364168">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603722821551" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604070364168" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603613620465">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
