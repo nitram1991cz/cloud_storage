@@ -7,6 +7,7 @@ if (!$_SESSION['is_logged_user_admin']) {
     header("Location: index.php?page=login");
     exit;
 }
+
 ?>
     <form action="index.php?page=admin" method="post">
         <table border="1">
@@ -24,6 +25,13 @@ if (!$_SESSION['is_logged_user_admin']) {
     <span style="color: red;">
 <?php
 
+function error_message($error)
+{
+    ?>
+    <div class='error'><?php echo($error); ?></div>
+    <?php
+}
+
 function delete($id, $mysqli)
 {
     $id = mysqli_real_escape_string($mysqli, $id);
@@ -32,7 +40,7 @@ function delete($id, $mysqli)
     if (mysqli_query($mysqli, $sql)) {
         echo "Záznam byl úspěšně smazán. ";
     } else {
-        echo "Chyba při mazání záznamu: " . mysqli_error($mysqli);
+        error_message("Chyba při mazání záznamu: " . mysqli_error($mysqli));
     }
 }
 
@@ -50,7 +58,7 @@ function insert($username, $password, $storage_limit, $mysqli)
     if (mysqli_query($mysqli, $sql)) {
         echo "Záznam byl úspěšně vytvořen. ";
     } else {
-        echo "Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysqli_error($mysqli);
+        error_message("Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysqli_error($mysqli));
     }
 }
 
@@ -66,18 +74,18 @@ function update($column_name, $column_value, $id, $mysqli)
         $sql = "UPDATE users SET $column_name='$column_value' WHERE id='$id'";
     }
     if (!mysqli_query($mysqli, $sql)) {
-        echo "Chyba při aktualizaci záznamu: " . mysqli_error($mysqli);
+        error_message("Chyba při aktualizaci záznamu: " . mysqli_error($mysqli));
     }
 }
 
 function validatePasswordLength($password, $min, $max)
 {
     if (strlen($password) < $min) {
-        echo("Heslo musi mit minimalne 5 znaku. ");
+        error_message("Heslo musi mit minimalne 5 znaku. ");
         return false;
     }
     if (strlen($password) > $max) {
-        echo("Heslo musi mit maximalne 20 znaku. ");
+        error_message("Heslo musi mit maximalne 20 znaku. ");
         return false;
     }
     return true;
@@ -86,7 +94,7 @@ function validatePasswordLength($password, $min, $max)
 function validateStorageLimit($storage_limit)
 {
     if (!is_numeric($storage_limit) and $storage_limit != "") {
-        echo("Limit muze byt pouze cislo nebo prazdny retezec. ");
+        error_message("Limit muze byt pouze cislo nebo prazdny retezec. ");
         return false;
     }
     return true;
@@ -95,11 +103,11 @@ function validateStorageLimit($storage_limit)
 function validateUsernameUpdate($username, $mysqli, $id)
 {
     if (strlen($username) == 0) {
-        echo("Uživatelské jméno musí být zadané. ");
+        error_message("Uživatelské jméno musí být zadané. ");
         return false;
     }
     if (strlen($username) > 50) {
-        echo("Uživatelské jméno může mít maximálně 50 znaků. ");
+        error_message("Uživatelské jméno může mít maximálně 50 znaků. ");
         return false;
     }
     $username = mysqli_real_escape_string($mysqli, $username);
@@ -108,7 +116,7 @@ function validateUsernameUpdate($username, $mysqli, $id)
     $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_NUM);
     if ($row[0] > 0) {
-        echo("Uživatel s touto přezdívkou je již v databázi obsažen.");
+        error_message("Uživatel s touto přezdívkou je již v databázi obsažen.");
         return false;
     }
     return true;
@@ -117,11 +125,11 @@ function validateUsernameUpdate($username, $mysqli, $id)
 function validateNewUsername($username, $mysqli)
 {
     if (strlen($username) == 0) {
-        echo("Uživatelské jméno musí být zadané. ");
+        error_message("Uživatelské jméno musí být zadané. ");
         return false;
     }
     if (strlen($username) > 50) {
-        echo("Uživatelské jméno může mít maximálně 50 znaků. ");
+        error_message("Uživatelské jméno může mít maximálně 50 znaků. ");
         return false;
     }
     $username = mysqli_real_escape_string($mysqli, $username);
@@ -129,7 +137,7 @@ function validateNewUsername($username, $mysqli)
     $result = mysqli_query($mysqli, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_NUM);
     if ($row[0] > 0) {
-        echo("Uživatel s touto přezdívkou je již v databázi obsažen.");
+        error_message("Uživatel s touto přezdívkou je již v databázi obsažen.");
         return false;
     }
     return true;

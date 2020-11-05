@@ -13,8 +13,25 @@
 <form action="index.php?page=login" method="post">
     <td><input type='submit' name='Logout' value='Logout'></td>
 </form>
+
+<form action="index.php?page=upload_file" method="post">
+    <td><input type='submit' name='add_file' value='Add file'></td>
+</form>
+
+<form action="index.php?page=file_list" method="post">
+    <td><input type='submit' name='file_list' value='File list'></td>
+</form>
+
+<form action="index.php?page=admin" method="post">
+    <td><input type='submit' name='admin' value='Admin'></td>
+</form>
+
+<form action="index.php?page=home" method="post">
+    <td><input type='submit' name='home' value='Home'></td>
+</form>
+
 <?php
-ini_set('session.cookie_lifetime', 30*24*60*60);
+ini_set('session.cookie_lifetime', 30 * 24 * 60 * 60);
 session_start();
 
 if (isset($_POST['Logout'])) {

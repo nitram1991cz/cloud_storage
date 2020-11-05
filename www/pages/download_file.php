@@ -1,21 +1,32 @@
 <?php
 include "config.php";
-$file_id=htmlspecialchars($_GET['file_id']);
+$file_id = htmlspecialchars($_GET['file_id']);
 $sql = "SELECT * FROM files where file_id='$file_id'";
 $result = mysqli_query($mysqli, $sql);
-$file=mysqli_fetch_assoc($result);
+$file = mysqli_fetch_assoc($result);
 
-$a = $ADRESAR.$file['file_id'];
+$a = $ADRESAR . $file['file_id'];
+if (file_exists($a)) {
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="' . basename($file['file_name']) . '"');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    flush();
+    readfile($a);
+    die();
+}
+function error_message($error)
+{
+    ?>
+    <div class='error'><?php echo($error); ?></div>
+    <?php
+}
 
-header('Content-Description: File Transfer');
-header('Content-Type: application/octet-stream');
-header('Content-Disposition: attachment; filename="'.basename($file['file_name']).'"');
-header('Expires: 0');
-header('Cache-Control: must-revalidate');
-header('Pragma: public');
-//header('Content-Length: ' . filesize($file['file_id']));
-flush();
-readfile($a);
-die();
+error_message("Soubor " . basename($file['file_name']) . " nenalezen.");
+?>
 
+
+<?php
 ?>
