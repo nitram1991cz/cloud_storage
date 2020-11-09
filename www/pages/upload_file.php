@@ -43,7 +43,11 @@ if (isset($_POST["submit"])) {
     if ($_SESSION['storage_limit'] == null) {
         insert_file($_FILES["fileToUpload"]["size"], $_SESSION['id'], basename($_FILES["fileToUpload"]["name"]), $mysqli);
     } else {
-        if ($_FILES["fileToUpload"]["size"] > $_SESSION['storage_limit']) {
+        $sql = "SELECT SUM(file_size) FROM files where user_id='$id'";
+        $result = mysqli_query($mysqli, $sql);
+        $row = mysqli_fetch_row($result);
+        // echo (mysqli_error ($mysqli));
+        if (($_FILES["fileToUpload"]["size"] + $row[0]) > $_SESSION['storage_limit']) {
             error_message("Soubor je prilis velky. ");
             $uploadOk = 0;
         } else {
