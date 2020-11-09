@@ -1,0 +1,5 @@
+.error {color: red}
+h1 {color: green}
+.menu {position: fixed}
+ul li {list-style-image: url("../../images/file.png")}
+/*ul li {display: inline-block}

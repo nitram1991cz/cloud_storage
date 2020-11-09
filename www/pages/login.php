@@ -29,6 +29,7 @@ if (isset($_POST['Login'])) {
         $_SESSION['logged_username'] = $username;
         $_SESSION['id'] = $row['id'];
         $_SESSION['is_logged_user_admin'] = $row['admin'];
+        $_SESSION['storage_limit'] = $row['storage_limit'];
         //var_dump($row);
         header("Location: index.php?page=home");
         exit;

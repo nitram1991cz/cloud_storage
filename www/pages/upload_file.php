@@ -5,11 +5,15 @@ include "config.php";
 <h1> Upload file </h1>
 
 <form action="index.php?page=upload_file" method="post" enctype="multipart/form-data">
-    Select file to upload:
+    Vyber soubor k nahrati:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload" name="submit">
 </form>
 <?php
+if (!$_SESSION['logged_username']) {
+    header("Location: index.php?page=login");
+    exit;
+}
 function error_message($error)
 {
     ?>
@@ -23,9 +27,7 @@ function insert_file($file_size, $user_id, $file_name, $mysqli)
     $sql = "INSERT INTO files (file_size, user_id, file_name)
             VALUES ($file_size, $user_id, '$file_name')";
 
-    if (mysqli_query($mysqli, $sql)) {
-        echo "Záznam byl úspěšně vytvořen. ";
-    } else {
+    if (!mysqli_query($mysqli, $sql)) {
         error_message("Chyba vytvoreni zaznamu. ");
     }
 }
@@ -34,15 +36,20 @@ if (isset($_POST["submit"])) {
 
     $target_file = $ADRESAR . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-
-
-    if ($_FILES["fileToUpload"]["size"] > 500000000) {
-        error_message("Soubor je prilis velky. ");
-        $uploadOk = 0;
+    $id = $_SESSION["id"];
+    $sql = "SELECT storage_limit FROM users where id='$id'";
+    $result = mysqli_query($mysqli, $sql);
+    $file_name = mysqli_fetch_assoc($result);
+    if ($_SESSION['storage_limit'] == null) {
+        insert_file($_FILES["fileToUpload"]["size"], $_SESSION['id'], basename($_FILES["fileToUpload"]["name"]), $mysqli);
+    } else {
+        if ($_FILES["fileToUpload"]["size"] > $_SESSION['storage_limit']) {
+            error_message("Soubor je prilis velky. ");
+            $uploadOk = 0;
+        } else {
+            insert_file($_FILES["fileToUpload"]["size"], $_SESSION['id'], basename($_FILES["fileToUpload"]["name"]), $mysqli);
+        }
     }
-    insert_file($_FILES["fileToUpload"]["size"], $_SESSION['id'], basename($_FILES["fileToUpload"]["name"]), $mysqli);
-    $file_name = $_FILES["fileToUpload"]["name"];
 
     $file_id = mysqli_insert_id($mysqli);
     if ($uploadOk == 0) {
@@ -50,7 +57,7 @@ if (isset($_POST["submit"])) {
 
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $ADRESAR . $file_id)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+            echo "Soubor " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " byl nahrán.";
         } else {
             error_message("Chyba pri nahrati souboru. ");
         }

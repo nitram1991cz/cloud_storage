@@ -1,8 +1,5 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "cloud_storage";
+include "db_data.php";
 
 $mysqli = mysqli_connect($servername, $username, $password, $dbname);
 

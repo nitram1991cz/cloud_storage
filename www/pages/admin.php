@@ -8,6 +8,7 @@ if (!$_SESSION['is_logged_user_admin']) {
     exit;
 }
 
+
 ?>
     <form action="index.php?page=admin" method="post">
         <table border="1">
@@ -22,7 +23,7 @@ if (!$_SESSION['is_logged_user_admin']) {
             </tr>
         </table>
     </form>
-    <span style="color: red;">
+
 <?php
 
 function error_message($error)
@@ -171,7 +172,6 @@ if (mysqli_num_rows($users) > 0) {
 
     foreach ($users as $user) {
         ?>
-        </span>
         <form action="index.php?page=admin" method="post">
             <table border="1">
                 <tr>
