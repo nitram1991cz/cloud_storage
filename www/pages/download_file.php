@@ -2,8 +2,8 @@
 include "config.php";
 $file_id = htmlspecialchars($_GET['file_id']);
 $sql = "SELECT * FROM files where file_id='$file_id'";
-$result = mysqli_query($mysqli, $sql);
-$file = mysqli_fetch_assoc($result);
+$result = mysql_query(/*$mysqli,*/ $sql);
+$file = mysql_fetch_assoc($result);
 
 $a = $ADRESAR . $file['file_id'];
 if (file_exists($a)) {

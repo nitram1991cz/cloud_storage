@@ -2,7 +2,6 @@
 include "header.php";
 include "config.php";
 ?>
-<h1> Remove file </h1>
 <?php
 function error_message($error)
 {
@@ -13,7 +12,7 @@ function error_message($error)
 
 $file_id = htmlspecialchars($_GET['file_id']);
 $sql = "DELETE FROM files where file_id='$file_id'";
-$result = mysqli_query($mysqli, $sql);
+$result = mysql_query(/*$mysqli,*/ $sql);
 
 $a = $ADRESAR . $file_id;
 if (unlink($a) and $result) {

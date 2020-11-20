@@ -1,6 +1,13 @@
 <?php
-include "header.php";
+
 include "config.php";
+include "header.php";
+if (!$_SESSION['logged_username']) {
+    header("Location: index.php?page=login");
+    exit;
+}
+echo($status);
+include "menu.php";
 ?>
 <h1> Upload file </h1>
 
@@ -10,10 +17,6 @@ include "config.php";
     <input type="submit" value="Upload" name="submit">
 </form>
 <?php
-if (!$_SESSION['logged_username']) {
-    header("Location: index.php?page=login");
-    exit;
-}
 function error_message($error)
 {
     ?>
@@ -27,7 +30,7 @@ function insert_file($file_size, $user_id, $file_name, $mysqli)
     $sql = "INSERT INTO files (file_size, user_id, file_name)
             VALUES ($file_size, $user_id, '$file_name')";
 
-    if (!mysqli_query($mysqli, $sql)) {
+    if (!mysql_query(/*$mysqli,*/ $sql)) {
         error_message("Chyba vytvoreni zaznamu. ");
     }
 }
@@ -37,17 +40,17 @@ if (isset($_POST["submit"])) {
     $target_file = $ADRESAR . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $id = $_SESSION["id"];
-    $sql = "SELECT storage_limit FROM users where id='$id'";
-    $result = mysqli_query($mysqli, $sql);
-    $file_name = mysqli_fetch_assoc($result);
+   /* $sql = "SELECT storage_limit FROM users where id='$id'";
+    $result = mysql_query(/*$mysqli, $sql);
+    $file_name = mysql_fetch_assoc($result);
+    var_dump($file_name);*/
     if ($_SESSION['storage_limit'] == null) {
         insert_file($_FILES["fileToUpload"]["size"], $_SESSION['id'], basename($_FILES["fileToUpload"]["name"]), $mysqli);
     } else {
         $sql = "SELECT SUM(file_size) FROM files where user_id='$id'";
-        $result = mysqli_query($mysqli, $sql);
-        $row = mysqli_fetch_row($result);
-        // echo (mysqli_error ($mysqli));
-        if (($_FILES["fileToUpload"]["size"] + $row[0]) > $_SESSION['storage_limit']) {
+        $result = mysql_query(/*$mysqli,*/ $sql);
+        $row = mysql_fetch_row($result);
+        if (($_FILES["fileToUpload"]["size"] + $row[0]) > ($_SESSION['storage_limit']*1000000)) {
             error_message("Soubor je prilis velky. ");
             $uploadOk = 0;
         } else {
@@ -55,7 +58,7 @@ if (isset($_POST["submit"])) {
         }
     }
 
-    $file_id = mysqli_insert_id($mysqli);
+    $file_id = mysql_insert_id($mysqli);
     if ($uploadOk == 0) {
         error_message("Chyba pri nahrati souboru. ");
 

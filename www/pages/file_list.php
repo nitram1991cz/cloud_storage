@@ -1,22 +1,23 @@
 <?php
 include "header.php";
 include "config.php";
-?>
-<h1> File list </h1>
-<?php
+
 if (!$_SESSION['logged_username']) {
     header("Location: index.php?page=login");
     exit;
 }
-
+echo($status);
+include "menu.php";
 $files = scandir($ADRESAR);
 $user_id = $_SESSION['id'];
 $sql = "SELECT * FROM files where user_id='$user_id'";
-$result = mysqli_query($mysqli, $sql);
-$file_name = mysqli_fetch_assoc($result);
-$db_files = mysqli_query($mysqli, $sql);
-
-while ($row = mysqli_fetch_assoc($db_files)) {
+$result = mysql_query(/*$mysqli,*/ $sql);
+$file_name = mysql_fetch_assoc($result);
+$db_files = mysql_query(/*$mysqli,*/ $sql);
+?>
+<h1> File list </h1>
+<?php
+while ($row = mysql_fetch_assoc($db_files)) {
     echo $row['file_name'] . PHP_EOL;
     $pripona = pathinfo($row["file_name"], PATHINFO_EXTENSION);
     ?>

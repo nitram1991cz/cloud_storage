@@ -1,15 +1,14 @@
 <?php
 include "header.php";
-?>
-    <h1> Admin </h1>
-<?php
+
 if (!$_SESSION['is_logged_user_admin']) {
     header("Location: index.php?page=login");
     exit;
 }
-
-
+echo($status);
+include "menu.php";
 ?>
+    <h1> Admin </h1>
     <form action="index.php?page=admin" method="post">
         <table border="1">
             <tr>
@@ -35,10 +34,10 @@ function error_message($error)
 
 function delete($id, $mysqli)
 {
-    $id = mysqli_real_escape_string($mysqli, $id);
+    $id = mysql_real_escape_string(/*$mysqli,*/ $id);
     $sql = "DELETE FROM users WHERE id='$id'";
 
-    if (mysqli_query($mysqli, $sql)) {
+    if (mysql_query(/*$mysqli,*/ $sql)) {
         echo "Záznam byl úspěšně smazán. ";
     } else {
         error_message("Chyba při mazání záznamu: " . mysqli_error($mysqli));
@@ -51,31 +50,31 @@ function insert($username, $password, $storage_limit, $mysqli)
     if (trim($storage_limit) == "" || intval($storage_limit) == 0) {
         $storage_limit = "NULL";
     }
-    $username = mysqli_real_escape_string($mysqli, $username);
-    $password = mysqli_real_escape_string($mysqli, $password);
+    $username = mysql_real_escape_string(/*$mysqli,*/ $username);
+    $password = mysql_real_escape_string(/*$mysqli,*/ $password);
     $sql = "INSERT INTO users (username, password, storage_limit)
             VALUES ('$username', '$password', $storage_limit)";
 
-    if (mysqli_query($mysqli, $sql)) {
+    if (mysql_query(/*$mysqli,*/ $sql)) {
         echo "Záznam byl úspěšně vytvořen. ";
     } else {
-        error_message("Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysqli_error($mysqli));
+        error_message("Chyba vytvoreni zaznamu: " . $sql . "<br>" . mysql_error($mysqli));
     }
 }
 
 function update($column_name, $column_value, $id, $mysqli)
 {
 
-    $id = mysqli_real_escape_string($mysqli, $id);
+    $id = mysql_real_escape_string(/*$mysqli,*/ $id);
     if (trim($column_value) == "" || intval($column_value) == 0 && gettype($column_value) != 'string') {
         $column_value = "NULL";
         $sql = "UPDATE users SET $column_name=$column_value WHERE id='$id'"; // pozor na bezpečnost $column_value
     } else {
-        $column_value = mysqli_real_escape_string($mysqli, $column_value);
+        $column_value = mysql_real_escape_string(/*$mysqli,*/ $column_value);
         $sql = "UPDATE users SET $column_name='$column_value' WHERE id='$id'";
     }
-    if (!mysqli_query($mysqli, $sql)) {
-        error_message("Chyba při aktualizaci záznamu: " . mysqli_error($mysqli));
+    if (!mysql_query(/*$mysqli,*/ $sql)) {
+        error_message("Chyba při aktualizaci záznamu: " . mysql_error($mysqli));
     }
 }
 
@@ -111,11 +110,11 @@ function validateUsernameUpdate($username, $mysqli, $id)
         error_message("Uživatelské jméno může mít maximálně 50 znaků. ");
         return false;
     }
-    $username = mysqli_real_escape_string($mysqli, $username);
-    $id = mysqli_real_escape_string($mysqli, $id);
+    $username = mysql_real_escape_string(/*$mysqli,*/ $username);
+    $id = mysql_real_escape_string(/*$mysqli,*/ $id);
     $sql = "SELECT COUNT(*) FROM users WHERE username='$username' AND id<>'$id' ";
-    $result = mysqli_query($mysqli, $sql);
-    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+    $result = mysql_query(/*$mysqli,*/ $sql);
+    $row = mysql_fetch_array($result, MYSQL_NUM);
     if ($row[0] > 0) {
         error_message("Uživatel s touto přezdívkou je již v databázi obsažen.");
         return false;
@@ -133,10 +132,10 @@ function validateNewUsername($username, $mysqli)
         error_message("Uživatelské jméno může mít maximálně 50 znaků. ");
         return false;
     }
-    $username = mysqli_real_escape_string($mysqli, $username);
+    $username = mysql_real_escape_string(/*$mysqli,*/ $username);
     $sql = "SELECT COUNT(*) FROM users WHERE username='$username' ";
-    $result = mysqli_query($mysqli, $sql);
-    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+    $result = mysql_query(/*$mysqli,*/ $sql);
+    $row = mysql_fetch_array($result, MYSQL_NUM);
     if ($row[0] > 0) {
         error_message("Uživatel s touto přezdívkou je již v databázi obsažen.");
         return false;
@@ -158,7 +157,9 @@ if (isset($_POST['save'])) {
         $id = $_POST['id'];
         update("password", $_POST['password'], $id, $mysqli);
         update("storage_limit", $_POST['storage_limit'], $id, $mysqli);
+        $_SESSION['storage_limit']=$_POST['storage_limit'];
         update("username", $_POST['username'], $id, $mysqli);
+        $_SESSION["logged_username"]=$_POST["username"];
     }
 }
 if (isset($_POST['delete'])) {
@@ -166,25 +167,27 @@ if (isset($_POST['delete'])) {
 }
 
 $sql = "SELECT * FROM users";
-$users = mysqli_query($mysqli, $sql);
-
-if (mysqli_num_rows($users) > 0) {
-
-    foreach ($users as $user) {
+$result = mysql_query(/*$mysqli,*/ $sql);
+//$row = mysql_fetch_array($users);
+//var_dump($row);
+$rows=mysql_num_rows($result);
+if ( $rows> 0) {
+   //foreach ($users as $user) {
+while($user=mysql_fetch_object($result)){
         ?>
         <form action="index.php?page=admin" method="post">
             <table border="1">
                 <tr>
                     <td><input type="text" size="10" name="username"
-                               value="<?php echo(htmlspecialchars($user['username'])); ?>"</td>
+                               value="<?php echo(htmlspecialchars($user-> username)); ?>"</td>
                     <td><input type="text" size="10" name="storage_limit"
-                               value="<?php echo(htmlspecialchars($user['storage_limit'])); ?>"</td>
+                               value="<?php echo(htmlspecialchars($user-> storage_limit)); ?>"</td>
                     <td><input type="text" size="10" name="password"
-                               value="<?php echo(htmlspecialchars($user['password'])); ?>"</td>
+                               value="<?php echo(htmlspecialchars($user-> password)); ?>"</td>
                     <td><input type='submit' name='save' value='save'></td>
                     <td><input type='submit' name='delete' value='delete'></td>
                 </tr>
-                <input type="hidden" name="id" value="<?php echo(htmlspecialchars($user['id'])); ?>">
+                <input type="hidden" name="id" value="<?php echo(htmlspecialchars($user->id)); ?>">
             </table>
         </form>
         <?php

@@ -1,9 +1,12 @@
 <?php
 include "db_data.php";
 
-$mysqli = mysqli_connect($servername, $username, $password, $dbname);
+$mysqli = mysql_connect($servername, $username, $password, $dbname);
+mysql_select_db("cloud_storage");
 
 if (!$mysqli) {
-    die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . mysql_error());
 }
+mysql_select_db($dbname)
+    or die("Nepodařilo se zvolit databázi");
 ?>
